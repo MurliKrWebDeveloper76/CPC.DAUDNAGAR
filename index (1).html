@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concepts Classes (CPC) - Daudnagar, Bihar</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #f4f4f4;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(45deg, #007bff, #00c4ff);
+            color: #fff;
+            padding: 10px 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo img {
+            height: 60px;
+            border-radius: 50%;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ffd700;
+        }
+
+        .admission-open {
+            background: #ff4d4d;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .hero {
+            height: 100vh;
+            background: url('images/hero-bg.jpg') no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+        }
+
+        .hero-content {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .motto {
+            font-style: italic;
+            color: #ffd700;
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #ff4d4d, #ff8c66);
+            color: #fff;
+            padding: 8px 16px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 15px;
+        }
+
+        .features, .about, .gallery, .contact, .social {
+            background: #fff;
+            margin: 15px 0;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 30px;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, #007bff, #00c4ff);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #f9f9f9, #e0e0e0);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .feature-card i {
+            font-size: 35px;
+            color: #007bff;
+            margin-bottom: 8px;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+            flex: 1;
+            min-width: 120px;
+        }
+
+        .stat .counter {
+            font-size: 36px;
+            background: linear-gradient(45deg, #007bff, #00c4ff);
+            -webkit-background-clip: text;
+            color: transparent;
+            font-weight: bold;
+        }
+
+        .social-links {
+            margin-top: 15px;
+        }
+
+        .social-icon {
+            height: 20px;
+            vertical-align: middle;
+            margin-right: 5px;
+            filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
+        }
+
+        .social-links a {
+            font-size: 16px;
+            color: #333;
+            margin: 0 15px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #007bff;
+        }
+
+        .founder {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .founder-photo {
+            width: 250px;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 8px;
+            text-align: center;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover .overlay {
+            transform: translateY(0);
+        }
+
+        .contact-info p {
+            font-size: 16px;
+            margin: 8px 0;
+        }
+
+        .contact-info i {
+            color: #007bff;
+            margin-right: 8px;
+        }
+
+        .contact-form, .admission-form {
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 15px;
+            background: linear-gradient(135deg, #f9f9f9, #e0e0e0);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-form label, .admission-form label {
+            display: block;
+            margin: 8px 0 4px;
+            font-weight: bold;
+        }
+
+        .contact-form input, .contact-form textarea, .admission-form input, .admission-form textarea, .admission-form select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .contact-form button, .admission-form button {
+            background: linear-gradient(45deg, #ff4d4d, #ff8c66);
+            color: #fff;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .contact-form button:hover, .admission-form button:hover {
+            transform: scale(1.05);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            overflow-y: auto;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: #fff;
+            max-width: 600px;
+            width: 90%;
+            margin: 15px auto;
+            padding: 15px;
+            border-radius: 10px;
+            position: relative;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            font-size: 20px;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .admission-form h3 {
+            text-align: center;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, #007bff, #00c4ff);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        /* Mobile Menu Styles */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            background: linear-gradient(45deg, #007bff, #00c4ff);
+            z-index: 1001;
+            transition: left 0.3s ease;
+            padding-top: 60px;
+        }
+
+        .mobile-menu.active {
+            left: 0;
+        }
+
+        .mobile-menu ul {
+            display: flex;
+            flex-direction: column;
+            list-style: none;
+        }
+
+        .mobile-menu ul li {
+            margin: 10px 0;
+            padding: 10px 20px;
+        }
+
+        .mobile-menu ul li a {
+            color: #fff;
+            font-size: 18px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .mobile-menu ul li a:hover {
+            color: #ffd700;
+        }
+
+        footer {
+            background: linear-gradient(45deg, #333, #555);
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+        }
+
+        /* Text Bubble Animation */
+        .bubble {
+            position: fixed;
+            background: linear-gradient(45deg, #007bff, #00c4ff);
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 16px;
+            opacity: 0;
+            animation: float 8s infinite;
+        }
+
+        .bubble:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .bubble:nth-child(2) { left: 50%; animation-delay: 2s; }
+        .bubble:nth-child(3) { left: 80%; animation-delay: 4s; }
+
+        @keyframes float {
+            0% { transform: translateY(100vh); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(-100vh); opacity: 0; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+                position: absolute;
+                left: 15px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            header {
+                flex-wrap: wrap;
+                justify-content: center;
+                padding: 10px;
+            }
+
+            .logo {
+                flex: 1;
+                text-align: center;
+            }
+
+            .admission-open {
+                margin-top: 5px;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .founder {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .founder-photo {
+                width: 200px;
+            }
+
+            .contact-form, .admission-form {
+                padding: 10px;
+            }
+
+            .modal-content {
+                width: 95%;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="hamburger" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="logo">
+            <img src="https://i.supaimg.com/2148b0b9-eb82-4724-a84d-86ba785720eb.png" alt="CPC Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="admission-open">Admission Open for 2025!</div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="#home" onclick="toggleMenu()">Home</a></li>
+            <li><a href="#about" onclick="toggleMenu()">About Us</a></li>
+            <li><a href="#gallery" onclick="toggleMenu()">Gallery</a></li>
+            <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Home Section -->
+    <section id="home" class="hero">
+        <div class="hero-content" data-aos="fade-up">
+            <h1>Welcome to Concepts Classes (CPC)</h1>
+            <p>Your Gateway to Success in IIT-JEE, NEET, NIFT, Olympiads, NTSE & Board Exams</p>
+            <p class="motto">"Discipline is the Key to Success"</p>
+            <button class="btn" onclick="openModal()">Enroll Now</button>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 data-aos="fade-up">Why Choose CPC?</h2>
+            <div class="feature-grid">
+                <div class="feature-card" data-aos="zoom-in">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <h3>Expert Faculty</h3>
+                    <p>Highly qualified teachers ensure in-depth concept clarity.</p>
+                </div>
+                <div class="feature-card" data-aos="zoom-in" data-aos-delay="100">
+                    <i class="fas fa-question-circle"></i>
+                    <h3>Doubt Clearing Sessions</h3>
+                    <p>Personalized doubt classes for every student.</p>
+                </div>
+                <div class="feature-card" data-aos="zoom-in" data-aos-delay="200">
+                    <i class="fas fa-flask"></i>
+                    <h3>Science Experiments</h3>
+                    <p>Hands-on experiments for practical learning.</p>
+                </div>
+                <div class="feature-card" data-aos="zoom-in" data-aos-delay="300">
+                    <i class="fas fa-camera"></i>
+                    <h3>CCTV Surveillance</h3>
+                    <p>All students under camera for safety and discipline.</p>
+                </div>
+            </div>
+            <!-- Statistics Counter -->
+            <div class="stats" data-aos="fade-up">
+                <div class="stat">
+                    <span class="counter" data-target="800">0</span>+
+                    <p>Students Enrolled</p>
+                </div>
+                <div class="stat">
+                    <span class="counter" data-target="5">0</span>+
+                    <p>Years of Experience</p>
+                </div>
+                <div class="stat">
+                    <span class="counter" data-target="95">0</span>%
+                    <p>Success Rate</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Section -->
+    <section class="social">
+        <div class="container">
+            <h2 data-aos="fade-up">Follow Us</h2>
+            <div class="social-links" data-aos="fade-up" data-aos-delay="100">
+                <a href="https://www.instagram.com/concepts_classes_cpc?igsh=MXZudjE4eGRqOHh1OQ==" target="_blank">
+                    <img src="https://i.supaimg.com/aef2efe1-fab8-41e3-9813-d90001ec273f.jpg" alt="Instagram" class="social-icon"> Follow
+                </a>
+                <a href="https://youtube.com/@cpc_daudnagar?si=st2GmfD4g_jKkiYG" target="_blank">
+                    <img src="https://i.supaimg.com/739261eb-c9f0-414d-8460-a3804145c691.png" alt="YouTube" class="social-icon"> Follow
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 data-aos="fade-up">About Concepts Classes (CPC)</h2>
+            <div class="founder" data-aos="fade-up" data-aos-delay="100">
+                <img src="https://i.supaimg.com/57637293-98c7-425a-9359-fed001c213df.jpg" alt="Abhishek Raj" class="founder-photo">
+                <div class="founder-info">
+                    <h3>Founded by Abhishek Raj</h3>
+                    <p>With over <strong>5+ years of experience</strong>, Abhishek Raj established CPC to empower students in Daudnagar, Bihar. His vision is to provide world-class education for IIT-JEE, NEET, NIFT, Olympiads, NTSE, and Board exams.</p>
+                </div>
+            </div>
+            <p data-aos="fade-up" data-aos-delay="200">CPC enrolls <strong>800+ students annually</strong>, delivering top results in 10th and 12th Boards and competitive exams. Our motto, <strong>"Discipline is the Key to Success"</strong>, drives our student-centric approach.</p>
+            <p data-aos="fade-up" data-aos-delay="300">Equipped with CCTV surveillance, modern classrooms, and hands-on science experiments, CPC ensures a safe and engaging learning environment.</p>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2 data-aos="fade-up">Our Facilities</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item" data-aos="zoom-in">
+                    <img src="https://i.supaimg.com/f6312573-6441-464e-a151-77fbc29cad97.jpg" alt="Classroom">
+                    <div class="overlay">Modern Classroom</div>
+                </div>
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="https://i.supaimg.com/03bbb618-8e76-411c-851f-826fd94c5e97.jpg" alt="Students">
+                    <div class="overlay">Our Students</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 data-aos="fade-up">Get in Touch</h2>
+            <p data-aos="fade-up" data-aos-delay="100">Have questions or want to enroll? Contact us today!</p>
+            <div class="contact-info" data-aos="fade-up" data-aos-delay="200">
+                <p><i class="fas fa-phone"></i> +91 82288 35898</p>
+                <p><i class="fas fa-map-marker-alt"></i> Daudnagar, Bihar</p>
+                <p><i class="fas fa-envelope"></i> info@cpcdaudnagar.com</p>
+            </div>
+            <form class="contact-form" data-aos="fade-up" data-aos-delay="300">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+            <div class="social-links" data-aos="fade-up" data-aos-delay="400">
+                <a href="https://www.instagram.com/concepts_classes_cpc?igsh=MXZudjE4eGRqOHh1OQ==" target="_blank">
+                    <img src="https://i.supaimg.com/aef2efe1-fab8-41e3-9813-d90001ec273f.jpg" alt="Instagram" class="social-icon"> Follow
+                </a>
+                <a href="https://youtube.com/@cpc_daudnagar?si=st2GmfD4g_jKkiYG" target="_blank">
+                    <img src="https://i.supaimg.com/739261eb-c9f0-414d-8460-a3804145c691.png" alt="YouTube" class="social-icon"> Follow
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admission Form Modal -->
+    <div id="admissionModal" class="modal">
+        <div class="modal-content" data-aos="fade-up">
+            <span class="close-btn" onclick="closeModal()">×</span>
+            <form class="admission-form" id="admissionForm">
+                <h3>Admission Form</h3>
+                <label for="studentName">Student Name</label>
+                <input type="text" id="studentName" name="studentName" required>
+                
+                <label for="photo">Upload Photo</label>
+                <input type="file" id="photo" name="photo" accept="image/*" required>
+                
+                <label for="dob">Date of Birth</label>
+                <input type="date" id="dob" name="dob" required>
+                
+                <label for="gender">Gender</label>
+                <select id="gender" name="gender" required>
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+                
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
+                
+                <label for="address">Address</label>
+                <textarea id="address" name="address" rows="3" required></textarea>
+                
+                <label for="parentName">Parent/Guardian Name</label>
+                <input type="text" id="parentName" name="parentName" required>
+                
+                <label for="parentPhone">Parent/Guardian Phone</label>
+                <input type="tel" id="parentPhone" name="parentPhone" pattern="[0-9]{10}" required>
+                
+                <label for="course">Course Applying For</label>
+                <select id="course" name="course" required>
+                    <option value="">Select Course</option>
+                    <option value="IIT-JEE">IIT-JEE</option>
+                    <option value="NEET">NEET</option>
+                    <option value="NIFT">NIFT</option>
+                    <option value="Olympiads">Olympiads</option>
+                    <option value="NTSE">NTSE</option>
+                    <option value="Board Exams">Board Exams</option>
+                </select>
+                
+                <label for="class">Current Class/Grade</label>
+                <input type="text" id="class" name="class" required>
+                
+                <label for="school">Current School</label>
+                <input type="text" id="school" name="school" required>
+                
+                <button type="submit">Submit Application</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Text Bubble Animation -->
+    <div class="bubble">Learn</div>
+    <div class="bubble">Succeed</div>
+    <div class="bubble">Discipline</div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Concepts Classes (CPC). All Rights Reserved.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Counting Animation
+        const counters = document.querySelectorAll('.counter');
+        counters.forEach(counter => {
+            counter.innerText = '0';
+            const updateCounter = () => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText;
+                const increment = target / 200;
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + increment);
+                    setTimeout(updateCounter, 10);
+                } else {
+                    counter.innerText = target;
+                }
+            };
+            updateCounter();
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Contact Form Submission (Basic Alert for Demo)
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+
+        // Admission Form Modal
+        function openModal() {
+            document.getElementById('admissionModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('admissionModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Admission Form Submission (Basic Alert for Demo)
+        document.getElementById('admissionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your application! Our team will contact you soon.');
+            this.reset();
+            closeModal();
+        });
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('admissionModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        };
+
+        // Toggle Mobile Menu
+        function toggleMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : 'auto';
+        }
+    </script>
+</body>
+</html>
